@@ -1,0 +1,139 @@
+/* header.component.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.welcome {
+  color: #333;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column
+}
+
+.menu {
+  display: flex;
+  gap: 15px;
+}
+
+.menu span {
+  display: inline-flex;      /* thay vì flex, dùng inline-flex cho tự nhiên hơn */
+  align-items: center;
+  gap: 5px;
+  color: black;
+  cursor: pointer;
+  padding: 0 10px; /* tạo khoảng cách giữa nội dung và dấu | */
+  line-height: 1;            /* giúp căn dòng thẳng hơn */
+}
+
+.menu span:not(:first-child) {
+  border-left: 1px solid #ccc;
+}
+mat-icon {
+  font-size: 16px;
+  display: inline-flex;      /* hoặc inline-block */
+  align-items: center;
+  vertical-align: middle;
+  color: #1a73e8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: white;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-image: linear-gradient(to right, #f82caa, #8029fc);
+  padding: .8rem;
+}
+
+.logo .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #003366;
+}
+
+.search-box {
+  flex: 1;
+  display: flex;
+  height: 50px;
+  margin: 0 30px;
+  background: #f1f3f4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.search-box select {
+  border: none;
+  background: #e0e0e0;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.search-box .search-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-item {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+
