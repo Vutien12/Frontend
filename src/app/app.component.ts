@@ -6,11 +6,12 @@ import { LoginComponent } from './shared/Login/login.component';
 import { ShopComponent } from "./shared/Shop/shop.component";
 import { ProductDetailComponent } from './shared/Detailproduct/detailproduct.component';
 import { BlogComponent } from './shared/Blog/blog.component';
+import { FashionComponent } from './shared/Menfashion/fashion.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatIconModule, BlogComponent],
+  imports: [RouterOutlet, MatIconModule, FashionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

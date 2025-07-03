@@ -13,6 +13,7 @@ export interface Product {
   reviews: number;
   badge?: string;
   badgeColor?: string;
+  isWishlisted?: boolean; // <--- thêm dòng này
 }
 
 export interface Category {
@@ -23,9 +24,9 @@ export interface Category {
 }
 
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css'],
+  selector: 'fashion-shop',
+  templateUrl: './fashion.component.html',
+  styleUrls: ['./fashion.component.css'],
   standalone: true,
   imports: [
     CommonModule,
@@ -33,13 +34,13 @@ export interface Category {
     MatIconModule
   ]
 })
-export class ShopComponent implements OnInit {
+export class FashionComponent implements OnInit {
   viewMode: 'grid' | 'list' = 'grid';
   sortBy: string = 'Latest';
   itemsPerPage: number = 20;
   priceRange: [number, number] = [2, 7499];
   cartItems: number = 5;
-
+  wishlistCount: number = 0;
   sortOptions = ['Latest', 'Price: Low to High', 'Price: High to Low', 'Most Popular', 'Best Rating'];
   itemsPerPageOptions = [10, 20, 50, 100];
 
@@ -134,6 +135,24 @@ export class ShopComponent implements OnInit {
       image: 'assets/images/sennheiser-small.jpg',
       rating: 0,
       reviews: 0
+    },
+    {
+      id: 10,
+      name: 'Sennheiser Consumer Audio Momentum 4 Wireless',
+      price: 255.00,
+      originalPrice: 399.00,
+      image: 'assets/images/sennheiser-small.jpg',
+      rating: 0,
+      reviews: 0
+    },
+    {
+      id: 11,
+      name: 'Sennheiser Consumer Audio Momentum 4 Wireless',
+      price: 255.00,
+      originalPrice: 399.00,
+      image: 'assets/images/sennheiser-small.jpg',
+      rating: 0,
+      reviews: 0
     }
   ];
 
@@ -207,7 +226,15 @@ export class ShopComponent implements OnInit {
   }
 
   addToWishlist(product: Product): void {
+  product.isWishlisted = !product.isWishlisted;
+
+  if (product.isWishlisted) {
+    this.wishlistCount++;
     console.log('Added to wishlist:', product.name);
+    } else {
+      this.wishlistCount--;
+      console.log('Removed from wishlist:', product.name);
+    }
   }
 
   generateStars(rating: number): boolean[] {

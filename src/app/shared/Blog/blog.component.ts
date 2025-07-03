@@ -2,6 +2,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
+
 
 interface BlogPost {
   id: number;
@@ -41,7 +44,7 @@ export class BlogComponent implements OnInit {
   isMobileMenuOpen: boolean = false;
   isMobileSearchOpen: boolean = false;
   isMobile: boolean = false;
-
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   // Blog posts data
   blogPosts: BlogPost[] = [
     {
@@ -234,11 +237,12 @@ export class BlogComponent implements OnInit {
   // Cart and wishlist
   cartCount: number = 0;
 
-  constructor() { }
-
   ngOnInit(): void {
     this.initializeBlog();
     this.checkScreenSize();
+    if (isPlatformBrowser(this.platformId)) {
+      window.addEventListener('resize', () => this.checkScreenSize());
+    }
   }
 
   // Listen for window resize events
@@ -253,7 +257,10 @@ export class BlogComponent implements OnInit {
 
   // Check if screen is mobile size
   checkScreenSize(): void {
-    this.isMobile = window.innerWidth <= 768;
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.innerWidth <= 768;
+      console.log('Is mobile:', this.isMobile);
+    }
   }
 
   // Mobile menu toggle
